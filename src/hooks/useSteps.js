@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function useSteps() {
     const [step, setSteps] = useState(1);

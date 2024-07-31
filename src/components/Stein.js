@@ -5,27 +5,36 @@ const store = new SteinStore(
     "https://api.steinhq.com/v1/storages/5d3fb20987c49c04cac13693"
 );
 
-function writeToDatabase(parentInfo, student) {
+function writeToDatabase(parentInfo, student, prepareStudent) {
     let registration = {...parentInfo, ...student};
-    writeRegistration(registration);
+    writeRegistration(registration, () => {
+        // TODO: Use better confirmation dialog.
+        if (!window.confirm("추가 등록할 학생이 있습니까? (Do you need to enter an additional strudent?)")) {
+            window.location.href = '/confirmation';
+        } else {
+            console.log("I have additional student.");
+            // let user to re-enter student
+            prepareStudent();
+        }
+    });
 }
 
-function writeRegistration(registration) {
+function writeRegistration(registration, postFunction) {
     store.append(Constants.dbYear, [registration], 
     {
         authentication: { username: Constants.username, password: Constants.auth }
     })
     .then(res => {
-        {window.location.href='/confirmation'};
+        postFunction();
     }).catch(err => {
         console.log(err);
-        {window.location.href='/about'};
+        window.location.href = '/about';
     });
 }
 
 async function searchDatabase(email) {
     // console.log("em: " + email);
-    return await store.read("Database",     
+    return await store.read(Constants.previousDbYear,     
     {
         authentication: { username: Constants.username, password: Constants.auth },
         search: { email: email }

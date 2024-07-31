@@ -1,7 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
-
-import Student from '../components/Student';
+import { useState } from "react";
 
 function useStudents() {
     const [students, setStudents] = useState({
@@ -17,22 +14,6 @@ function useStudents() {
         classDay: '',
     });
 
-    // function addStudent() {
-    //     setStudents(students+1);
-    // }
-
-    // function removeStudent() {
-    //     setStudents(students-1);
-    // // }
-    // function getStudents(registrations) {
-    //     let s = [];
-    //     console.log(students);
-    //     for(let i=0;i<students;i++) {
-    //         console.log("showing student " + i);
-    //         s.push(<Student key={i} registrations={registrations} studentCount={i}></Student>);
-    //     }
-    //     return s;
-    // }
     return {students, setStudents};
 }
 

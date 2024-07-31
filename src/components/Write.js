@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import useAuth from '../hooks/useAuth';
-import { Container, Button, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import draftToHtml from "draftjs-to-html";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, ContentState, convertToRaw, convertFromHTML } from "draft-js";

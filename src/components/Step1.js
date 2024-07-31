@@ -1,12 +1,18 @@
 import React from 'react';
 import useValidation from '../hooks/useValidation';
-import { Form, Col, Button, ButtonGroup } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 const Step1 = ({steps, registrations}) => {
     const {step, addCurrentStep, backCurrentStep} = steps;
     const {registration, setRegistration} = registrations;
 
     const [validated, setValidated] = useValidation();
+
+
     const handleSubmit = event => {
         const form = event.currentTarget;
         if (!form.checkValidity()) {
@@ -19,6 +25,8 @@ const Step1 = ({steps, registrations}) => {
         }
       };
     const addToRegistration = (obj) => {
+        // Overwrite registration with obj which has subset of key of registration.
+        // https://oprearocks.medium.com/what-do-the-three-dots-mean-in-javascript-bc5749439c9a
         let parentInfo = {...registration, ...obj};
         setRegistration(parentInfo);
     }
@@ -26,6 +34,7 @@ const Step1 = ({steps, registrations}) => {
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <h3>Parent Information</h3>
+
         <Form.Group controlId="formGridName">
             <Form.Label>성명 | Full Name *</Form.Label>
             <Form.Control required placeholder="Name" type="text"
@@ -37,6 +46,7 @@ const Step1 = ({steps, registrations}) => {
                     addToRegistration({parentName: e.target.value});
                 }}/>
         </Form.Group>
+
         <Form.Group controlId="formGridEmail">
             <Form.Label>Email *</Form.Label>
             <Form.Control required type="email" placeholder="Enter email" 
@@ -47,7 +57,9 @@ const Step1 = ({steps, registrations}) => {
                     addToRegistration({email: e.target.value});
                 }}/>
         </Form.Group>
-        <Form.Row>
+
+
+        <Row>
             <Form.Group as={Col} controlId="formGridPhone">
             <Form.Label>전화 번호 | Phone Number *</Form.Label>
             <Form.Control required type="phone" placeholder="Primary Phone #" 
@@ -69,7 +81,7 @@ const Step1 = ({steps, registrations}) => {
                     addToRegistration({otherPhone: e.target.value});
                 }}/>
             </Form.Group>
-        </Form.Row>
+        </Row>
 
         <Form.Group controlId="formGridAddress1">
             <Form.Label>Address *</Form.Label>
@@ -93,7 +105,7 @@ const Step1 = ({steps, registrations}) => {
                 }}/>
         </Form.Group>
 
-        <Form.Row>
+        <Row>
             <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>City *</Form.Label>
             <Form.Control required placeholder="Seattle"
@@ -130,7 +142,7 @@ const Step1 = ({steps, registrations}) => {
                     addToRegistration({zip: e.target.value});
                 }}/>
             </Form.Group>
-        </Form.Row>
+        </Row>
 
         <ButtonGroup>
             <Button

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Form, Container, Button, ButtonGroup, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import useStudents from '../hooks/useStudents';
 import useValidation from '../hooks/useValidation';
 import Student from './Student';

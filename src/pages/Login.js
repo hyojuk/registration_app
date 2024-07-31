@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import firebase from 'firebase';
-import { navigate } from "@reach/router";
+import { GoogleAuthProvider } from "firebase/auth";
+import { auth } from "../myfirebase";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const Login = () => {
     const [user, loading] = useAuth();
     const [authError, setAuthError] = useState(null);
+    const navigate = useNavigate();
     const handleLogin = async () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
+        const provider = new GoogleAuthProvider();
         try {
-            await firebase.auth().signInWithPopup(provider);
+            await auth.signInWithPopup(provider);
             navigate("/");
         } catch (error) {
             setAuthError(error.message);
@@ -17,8 +19,7 @@ const Login = () => {
     };
 
     const handleSignOut = async () => {
-        firebase
-            .auth()
+        auth
             .signOut()
             .then(() => navigate("/"));
     };

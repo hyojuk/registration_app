@@ -1,8 +1,5 @@
 import React from 'react';
-import firebase from 'firebase';
 import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
-import Constants from '../constants';
 
 const Home = ({year}) => {
   return (
@@ -23,6 +20,8 @@ const Home = ({year}) => {
             <p>
             <Button variant="success" href="/register">등록 | Register</Button>
            </p>
+           <p> OR </p>
+            <Button variant="primary" href="/reregister">재등록 | Reregister</Button>
         </div>
         </div>
     </div>

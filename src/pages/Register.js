@@ -6,7 +6,6 @@ import useSteps from '../hooks/useSteps';
 import useRegistration from '../hooks/useRegistration';
 
 import { Container } from 'react-bootstrap';
-import Constants from '../constants';
 import useStudents from '../hooks/useStudents';
 
 const Register = ({year}) => {
@@ -19,16 +18,19 @@ const Register = ({year}) => {
       <h1>Registration</h1>
       <h4><div dangerouslySetInnerHTML={{ __html: year }} /></h4>
       <br></br>
+
       <Container style={{backgroundColor: '#eee', borderRadius: '7px', padding: '20px'}}>
         {
           step === undefined && <p>Loading...</p>
         }
+
         {
           step === 1 && <Step1 
             steps={{step, addCurrentStep, backCurrentStep}}
             registrations={{registration, setRegistration}}>
           </Step1>
         }
+
         {
           step === 2 && <Step2  
             steps={{step, addCurrentStep, backCurrentStep}}
@@ -42,9 +44,12 @@ const Register = ({year}) => {
             studentList={{students, setStudents}}>
           </Finish>
         }
+        
       </Container>
+
     </Container>
   )
+
 }
 
 export default Register;
