@@ -12,6 +12,7 @@ import ClassPage from './pages/ClassPage';
 import Login from './pages/Login';
 
 const App = () => {
+  window.location.replace("https://sakkoreanschool.netlify.app/");
   const firebaseRef = firebase.database().ref(`Year`);
   const [year, setYear] = useState("");
   useEffect(() => {
@@ -33,9 +34,9 @@ const App = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/register">Register</Nav.Link>
-            {/* <Nav.Link href="/class">Class</Nav.Link> */}
-            <Nav.Link href="/about">About</Nav.Link>
+	  {/*<Nav.Link href="/register">Register</Nav.Link>
+            <Nav.Link href="/class">Class</Nav.Link> 
+            <Nav.Link href="/about">About</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

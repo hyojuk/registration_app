@@ -15,13 +15,15 @@ const Home = ({year}) => {
         <div className="container text-white">
             <h1>St. Andrew Kim Korean School</h1>
             <h2>성 김대건 한국 학교</h2><br></br>
-            <div dangerouslySetInnerHTML={{ __html: year }} />
+	    
+	    <h3>Please visit new website. 새 웹싸이트를 방문해주십시오. <a href="https://sakkoreanschool.netlify.app/"> sakkoreanschool.netlify.app</a> </h3>
+	  {/*            <div dangerouslySetInnerHTML={{ __html: year }} />
             <p><strong>Now accepting registrations</strong></p> 
             <p>
             <Button variant="success" href="/register">등록 | Register</Button>
            </p>
            <p> OR </p>
-            <Button variant="primary" href="/reregister">재등록 | Reregister</Button>
+            <Button variant="primary" href="/reregister">재등록 | Reregister</Button> */}
         </div>
         </div>
     </div>
